@@ -23,7 +23,7 @@
 
 <script>
 // import { ref, watch, watchEffect, getCurrentInstance } from 'vue'
-import manageFind from './nf-find.js'
+import manageFind from './nf-manageFind.js'
 
 export default {
   name: 'nf-find-input',

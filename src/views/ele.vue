@@ -1,36 +1,47 @@
 <template>
-  <myInput :meta="meta1"/>
+  <myInput :meta="meta[1000]"/>
+  <number :meta="meta[1001]"/><br>
+  <cascaders :meta="meta[1013]"/><br>
+  <checks :meta="meta[1012]"/><br>
+  <datetime :meta="meta[1009]"/><br>
+  <nftime :meta="meta[1013]"/><br>
+  <radios :meta="meta[1011]"/><br>
+  <selects :meta="meta[1008]"/><br>
 </template>
 
 <script>
 import { reactive, ref } from 'vue'
 import myInput from '@/components/nf-find/input.vue'
+import number from '@/components/nf-find/number.vue'
+import cascaders from '@/components/nf-find/cascaders.vue'
+import checks from '@/components/nf-find/checks.vue'
+import datetime from '@/components/nf-find/datetime.vue'
+import nftime from '@/components/nf-find/time.vue'
+import radios from '@/components/nf-find/radios.vue'
+import selects from '@/components/nf-find/select.vue'
 
 export default {
   name: '',
   components: {
+    number,
+    cascaders,
+    checks,
+    datetime,
+    nftime,
+    radios,
+    selects,
     myInput
   },
   setup () {
     const value = ref('11')
-    const meta1 = reactive({
-      controlId: 1000,
-      colName: 'companyName',
-      controlType: 101,
-      class: '',
-      placeholder: '公司名称',
-      title: '公司名称',
-      size: 10,
-      maxlength: 100,
-      optionList: [],
-      findKind: '402',
-      findKindList: [401, 403, 402, 404, 405, 406],
-      tdCount: 1
-    })
+    const json = require('./json/FindDemo.json')
+
+    const meta = reactive(json.company.findItem)
+    console.log(meta)
 
     return {
       value,
-      meta1
+      meta
     }
   }
 }
